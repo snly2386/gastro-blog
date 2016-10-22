@@ -1,0 +1,17 @@
+{
+  "name": "food_blog",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "snly2386 <snly2386@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/snly2386/gastro-blog",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
