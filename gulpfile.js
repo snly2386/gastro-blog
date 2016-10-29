@@ -12,7 +12,13 @@ gulp.task('inject', function(){
   var injectSrc = gulp.src(['./public/css/*.css',
                             './public/js/*.js',
                             './public/vendor/css/*.css',
-                            './public/vendor/js/*.js'], { read: false })
+                            './public/vendor/js/jquery-1.11.3.js',
+                            './public/vendor/js/instafeed.min.js',
+                            './public/vendor/js/initializer.js',
+                            './public/vendor/js/jquery.simplyscroll.js',
+                            './public/vendor/js/jquery.scrollTo.min.js',
+                            './public/vendor/js/lightbox.js',
+                            './public/vendor/js/custom.js'], { read: false })
 
   var injectOptions = {
     ignorePath: '/public'
@@ -25,13 +31,13 @@ gulp.task('inject', function(){
     ignorePath: '../../public'
   }
 
-  return gulp.src('./src/views/*.ejs')
+  return gulp.src('./src/views/layouts/*.ejs')
     .pipe(wiredep(wiredepOptions))
     .pipe(inject(injectSrc, injectOptions))
-    .pipe(gulp.dest('./src/views'))
+    .pipe(gulp.dest('./src/views/layouts'))
 })
 
-gulp.task('serve', function(){
+gulp.task('serve', ['inject'], function(){
   var options = {
     script: 'app.js',
     watch: jsFiles

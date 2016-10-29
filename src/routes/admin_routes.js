@@ -9,15 +9,9 @@ var router = function(){
 
   adminRouter.route('/create_post')
     .post(adminController.createPost)
-      // var _post = new Post({
-      //   author: 'me',
-      //   title : 'test',
-      //   body  : 'is this shit even working'
-      // })
-      //
-      // _post.save(function(err, savedPost){
-      //   console.log(savedPost);
-      // })
+
+  adminRouter.route('/upload_photo')
+    .get(adminController.uploadPhoto)
 
 
 
