@@ -2,9 +2,10 @@ var mongoose = require('mongoose')
 var schema = mongoose.Schema
 
 var imageSchema = new schema({
-  url    : String,
-  caption: String,
-  date   : { type: Date, default: Date.now }
+  _creator: { type: schema.Types.ObjectId, ref: 'Post' },
+  url     : String,
+  caption : String,
+  date    : { type: Date, default: Date.now }
 })
 
 var image = mongoose.model('Image', imageSchema)

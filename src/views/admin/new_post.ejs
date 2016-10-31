@@ -1,10 +1,14 @@
+<%- contentFor('main') %>
 <h1>NEW FUCKIN POST</h1>
 <form class="" action="/admin/create_post" method="post">
   <input name="author" placeholder="author"></input>
   <input name="title" placeholder="title"></input>
   <input name="body" placeholder="body"></input>
-  <input type="file" name="image" id="image"></input>
-  <img id="preview" />
+  <input type="file" name="image" id="image" class="image"></input>
+  <input type="file" name="image"></input>
+  <div class="previewContainer">
+    <img id="preview" class="preview"/>
+  </div>
   <button>Submit</button>
 </form>
 
@@ -44,11 +48,22 @@ document.getElementById("image").onchange = function() {
   if (!file) return
 
   sign_request(file, function(response) {
-    console.log("HERES THE RESPONSE!!!!!!");
-    console.log(response);
     upload(file, response.signed_request, response.url, function() {
-      document.getElementById("preview").src = response.url
-      // document.getElementById("preview").src = 'https://foodblogchrisandwendy.s3.amazonaws.com' + '/' + file.name
+      // document.getElementById("preview").src = response.url
+      // previewLength = $('.preview').length
+      // $('.preview').each(function(index, elem){
+      //   if(!$(elem).attr('src')){
+      //     console.log('no src yet');
+      //     $(this).attr('src', response.url)
+      //   } else if(previewLength == (index + 1)){
+      //     console.log('should append here');
+      //     console.log('index');
+      //     console.log(index);
+      //     console.log('previewlength');
+      //     console.log(previewLength);
+      //     $('.previewContainer').append("<img src='" + response.url + "' class='preview'/>" )
+      //   }
+      // })
     })
   })
 }

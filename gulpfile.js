@@ -28,7 +28,7 @@ gulp.task('inject', function(){
   var wiredepOptions = {
     bowerJson: require('./bower.json'),
     directory: './public/vendor/bower_components',
-    ignorePath: '../../public'
+    ignorePath: '../../../public'
   }
 
   return gulp.src('./src/views/layouts/*.ejs')
