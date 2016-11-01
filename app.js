@@ -10,8 +10,9 @@ var dotenv         = require('dotenv').config();
 
 var app = express()
 
-var adminRouter = require('./src/routes/admin_routes')()
-var homeRouter  = require('./src/routes/home_routes')()
+var adminRouter   = require('./src/routes/admin_routes')()
+var homeRouter    = require('./src/routes/home_routes')()
+var commentRouter = require('./src/routes/comment_routes')()
 
 //static files
 app.use(express.static('public'))
@@ -31,6 +32,7 @@ app.use(expressLayouts);
 // routes
 app.use('/admin', adminRouter)
 app.use('/', homeRouter)
+app.use('/comments', commentRouter)
 
 //fire up the database
 mongoose.connect('mongodb://localhost:27017/foodBlog')

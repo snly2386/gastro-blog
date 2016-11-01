@@ -2,11 +2,12 @@ var mongoose = require('mongoose')
 var schema = mongoose.Schema
 
 var postSchema = new schema({
-  author: String,
-  title : String,
-  body  : String,
-  date  : { type: Date, default: Date.now },
-  images: [{type: schema.Types.ObjectId, ref: 'Image'}]
+  author  : String,
+  title   : String,
+  body    : String,
+  date    : { type: Date, default: Date.now },
+  images  : [{type: schema.Types.ObjectId, ref: 'Image'}],
+  comments: [{type: schema.Types.ObjectId, ref: 'Comment'}]
 })
 
 // methods
