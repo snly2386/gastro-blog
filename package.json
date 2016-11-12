@@ -11,6 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.6.12",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-preset-react": "^6.16.0",
     "body-parser": "^1.15.2",
     "bower": "^1.7.9",
     "connect-flash": "^0.1.1",
@@ -21,9 +24,18 @@
     "express-ejs-layouts": "^2.2.0",
     "express-session": "^1.14.1",
     "mongoose": "^4.6.4",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-stream": "^3.2.0"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
     "gulp": "^3.9.1",
     "gulp-inject": "^4.1.0",
     "gulp-nodemon": "^2.2.1",

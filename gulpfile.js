@@ -1,5 +1,6 @@
 var gulp    = require('gulp')
 var nodemon = require('nodemon')
+var webpack = require('webpack-stream')
 
 var jsFiles = ['*.js', 'src/**/*.js']
 
@@ -10,7 +11,6 @@ gulp.task('inject', function(){
 
 
   var injectSrc = gulp.src(['./public/css/*.css',
-                            './public/js/*.js',
                             './public/vendor/css/*.css',
                             './public/vendor/js/jquery-1.11.3.js',
                             './public/vendor/js/instafeed.min.js',
@@ -19,7 +19,7 @@ gulp.task('inject', function(){
                             './public/vendor/js/jquery.scrollTo.min.js',
                             './public/vendor/js/lightbox.js',
                             './public/vendor/js/custom.js'], { read: false })
-
+  //
   var injectOptions = {
     ignorePath: '/public'
   }
@@ -30,14 +30,21 @@ gulp.task('inject', function(){
     directory: './public/vendor/bower_components',
     ignorePath: '../../../public'
   }
-
+  //
   return gulp.src('./src/views/layouts/*.ejs')
     .pipe(wiredep(wiredepOptions))
     .pipe(inject(injectSrc, injectOptions))
     .pipe(gulp.dest('./src/views/layouts'))
 })
 
-gulp.task('serve', ['inject'], function(){
+gulp.task('webpack', function(){
+  return gulp.src('./public/js/app.js')
+    .pipe(webpack( require('./webpack.config.js') ))
+    .pipe(gulp.dest('./public/js'))
+})
+
+
+gulp.task('serve', ['webpack', 'inject'], function(){
   var options = {
     script: 'app.js',
     watch: jsFiles

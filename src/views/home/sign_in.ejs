@@ -1,0 +1,19 @@
+<%- contentFor('main') %>
+
+<h1>SIGN IN </h1>
+
+<form name="signInForm" action="/auth/sign_in" method="post">
+  <input name="username" style="color: black" placeholder="username"/>
+  <input name="password" style="color: black" placeholder="password"/>
+  <button type="submit"  style="color: white">SIGN IN</button>
+
+</form>
+
+<br>
+<h1>SIGN UP </h1>
+
+<form name="signUpForm" action="/auth/sign_up" method="post">
+  <input name="username" style="color: black" placeholder="username"/>
+  <input name="password" style="color: black" placeholder="password"/>
+  <button type="submit" style="color: white">SIGN UP</button>
+</form>

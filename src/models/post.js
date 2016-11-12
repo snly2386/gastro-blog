@@ -1,5 +1,6 @@
 var mongoose = require('mongoose')
-var schema = mongoose.Schema
+var schema   = mongoose.Schema
+var Comment   = require('../models/comment.js')
 
 var postSchema = new schema({
   author  : String,
@@ -34,6 +35,10 @@ postSchema.methods.rightSection = function(){
   halfLength = Math.ceil(allBody.length / 2)
   allBody.splice(0, halfLength)
   return allBody.join('.')
+}
+
+postSchema.methods.getComments = function(){
+  return this.comments 
 }
 
 var post = mongoose.model('Post', postSchema)

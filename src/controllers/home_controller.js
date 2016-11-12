@@ -9,8 +9,11 @@ var homeController = function(){
 
     Post.find({})
     .populate('images')
+    .populate('comments')
     .exec(function(err, allPosts){
       posts = allPosts
+      console.log('all postssss');
+      console.log(allPosts);
       res.render('index', {
         messages: req.flash('info'),
         layout  : 'layouts/application',
@@ -19,8 +22,15 @@ var homeController = function(){
     })
   }
 
+  var signIn = function(req, res){
+    res.render('home/sign_in', {
+      layout: 'layouts/application'
+    })
+  }
+
   return {
-    index : index
+    index : index,
+    signIn: signIn
   }
 }
 

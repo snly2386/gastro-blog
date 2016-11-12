@@ -49,6 +49,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-6">
 					<div class="touch">All Rights Reserved. Designed and Developed by <a href="#" class="link"><b>Themeify.com</b></a> </div>
+					<div id="hello"></div>
 				</div>
 			</div>
 		</div>
@@ -91,7 +92,6 @@
 							<% for(var i = 0; i < posts.length; i++) {%>
 								<% include ./partials/index/post_view.ejs %>
 							<%}%>
-
 							<!-- end post  -->
 
 						</div>
@@ -111,3 +111,26 @@
 		</div>
 	</div>
 	<!--end insta sidebar -->
+
+
+	<script>
+
+		$('form#commentForm').submit(function(event){
+			event.preventDefault()
+
+			var params = {}
+
+			$.each($(this).serializeArray(), function(idx, field){
+				params[field.name] = field.value
+			})
+
+			console.log(params);
+
+			$.post('/comments/create', params, function(comment){
+
+			})
+
+		})
+	</script>
+
+	<script src="/js/mainEntry.js"></script>

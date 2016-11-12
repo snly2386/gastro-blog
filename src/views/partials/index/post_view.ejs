@@ -46,17 +46,24 @@
       <br>
       <h4>Comments (2)</h4>
       <br>
-      <div class="comment main-comment">
-        <div class="comt-pic"><img src="images/comt-pic.png" alt=""> </div>
-        <div class="comt-author">
-          <h4>Joan Gonzalez </h4> <span class="comt-date">March 27, 2015</span>
-          <div class="reply-button">/ <a href="#"> Reply</a> </div>
+
+      <% for(var c = 0; c < posts[i].comments.length; c++){%>
+        <div class="comment main-comment">
+          <div class="comt-pic"><img src="images/comt-pic.png" alt=""> </div>
+          <div class="comt-author">
+            <h4><%= posts[i].comments[c].name %></h4>
+            <span class="comt-date"><%= posts[i].comments[c].date %></span>
+            <div class="reply-button">/
+              <a href="#"> Reply</a>
+            </div>
+          </div>
+          <div class="comt-txt">
+            <p><%= posts[i].comments[c].body%> </p>
+          </div>
         </div>
-        <div class="comt-txt">
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam </p>
-        </div>
-      </div>
-      <div class="comment sub-comment">
+      <% } %>
+
+      <!-- <div class="comment sub-comment">
         <div class="comt-pic"><img src="images/comt-pic.png" alt=""> </div>
         <div class="comt-author">
           <h4>Joan Gonzalez </h4> <span class="comt-date">March 27, 2015</span>
@@ -75,43 +82,39 @@
         <div class="comt-txt">
           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam </p>
         </div>
-      </div>
-      <div class="comment">
-        <div class="comt-pic"><img src="images/comt-pic.png" alt=""> </div>
-        <div class="comt-author">
-          <h4>Joan Gonzalez</h4> <span class="comt-date">March 27, 2015</span>
-          <div class="reply-button">/ <a href="#"> Reply</a> </div>
-        </div>
-        <div class="comt-txt">
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam </p>
-        </div>
-      </div>
+      </div> -->
       <div class="clear"></div>
       <div class="comment-form">
-        <br>
-        <div class="col-xs-12">
-          <h4>Leave a Reply</h4>
+        <form id="commentForm">
           <br>
-          <br> </div>
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-          <label>NAME*</label><span><br><input type="text"></span> </div>
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-          <label>EMAIL*</label>
-          <br>
-          <input type="text"> </div>
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-          <label>WEBSITE*</label>
-          <br>
-          <input type="text"> </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <br>
-          <label>YOUR COMMENT*</label>
-          <br>
-          <textarea rows="4" cols="8" name="comments"></textarea>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <br>
-          <input type="submit" value="POST COMMENT" class="submit-button"> </div>
+          <div class="col-xs-12">
+            <h4>Leave a Reply</h4>
+            <br>
+            <br> </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <label>NAME*</label><span><br><input type="text" name="name"></span> </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <label>EMAIL*</label>
+            <br>
+            <!-- <input type="text">  -->
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <label>WEBSITE*</label>
+            <br>
+            <!-- <input type="text">  -->
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <br>
+            <label>YOUR COMMENT*</label>
+            <br>
+            <textarea rows="4" cols="8" name="body"></textarea>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <br>
+            <input type="hidden" value="<%= posts[i]._id %>" name="_post"/>
+            <button type="submit" value="POST COMMENT" class="submit-button">POST COMMENT</button>
+          </div>
+        </form>
       </div>
     </div>
     <div class="clear"></div>
